@@ -5,8 +5,6 @@ github() {
   local version="$1"
   local reset="$2"
 
-  npm run hook
-
   if [ "$reset" == "--reset" ]; then
     git checkout --orphan orphan
   fi
