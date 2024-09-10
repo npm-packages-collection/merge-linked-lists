@@ -86,7 +86,6 @@ update_version() {
 update() {
   update_version
   changelog "$version"
-  npm run sass:build
 
   github "$version" "$1"
 }
