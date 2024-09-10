@@ -1,5 +1,5 @@
 {
-  "name": "merge-linked-lists",
+  "name": "@32teeth/merge-linked-lists",
   "description": "Merges multiple sorted linked lists into one sorted linked list",
   "author": "Eugene Yevhen Andruszczenko <eugene.andruszczenko@gmail.com>",
   "contributors": [
@@ -10,7 +10,7 @@
     "url": "git+https://github.com/32teeth/merge-linked-lists.git"
   },
   "license": "CC-BY-SA-4.0",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "keywords": [
     "linked",
     "list",
