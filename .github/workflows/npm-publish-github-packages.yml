@@ -22,6 +22,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+    outputs:
+      publish_status: ${{ steps.publish-step.outputs.publish_status }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -43,9 +45,9 @@ jobs:
               -H "Accept: application/vnd.github.v3+json" \
               https://api.github.com/repos/${{ github.repository }}/issues \
               -d "{\"title\": \"Publish Conflict\", \"body\": \"Attempted to publish over an existing version. Error details: \\n\\n$ERROR_MESSAGE\"}"
-            echo "publish_status=skipped" >> $GITHUB_ENV
+            echo "::set-output name=publish_status::skipped"
           else
-            echo "publish_status=success" >> $GITHUB_ENV
+            echo "::set-output name=publish_status::success"
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -53,6 +55,6 @@ jobs:
   notify:
     needs: publish
     runs-on: ubuntu-latest
-    if: ${{ env.publish_status == 'skipped' }}
+    if: ${{ needs.publish.outputs.publish_status == 'skipped' }}
     steps:
       - run: echo "The publish step was skipped due to a version conflict."
