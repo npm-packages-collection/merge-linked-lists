@@ -49,13 +49,10 @@ jobs:
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set publish step result
-        if: ${{ env.publish_status == 'skipped' }}
-        run: echo "::set-output name=status::skipped"
 
   notify:
     needs: publish
     runs-on: ubuntu-latest
-    if: ${{ needs.publish-gpr.outputs.status == 'skipped' }}
+    if: ${{ env.publish_status == 'skipped' }}
     steps:
       - run: echo "The publish step was skipped due to a version conflict."
