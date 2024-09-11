@@ -1,5 +1,5 @@
 {
-  "name": "@32teeth/merge-linked-lists",
+  "name": "merge-linked-lists",
   "description": "Merges multiple sorted linked lists into one sorted linked list",
   "author": "Eugene Yevhen Andruszczenko <eugene.andruszczenko@gmail.com>",
   "contributors": [
@@ -10,7 +10,7 @@
     "url": "git+https://github.com/32teeth/merge-linked-lists.git"
   },
   "license": "CC-BY-SA-4.0",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "keywords": [
     "linked",
     "list",
@@ -18,7 +18,7 @@
     "sort"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.com/"
   },
   "engines": {
     "node": "20.x",
@@ -27,6 +27,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "publish:npm": "npm publish --registry https://registry.npmjs.org/",
+    "publish:github": "npm publish --registry https://npm.pkg.github.com/",
+    "publish": "npm run publish:npm && npm run publish:github",
     "test": "mocha"
   },
   "devDependencies": {
